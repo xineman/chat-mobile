@@ -1,59 +1,35 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React, { Component } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+  createBottomTabNavigator,
+  createStackNavigator,
+} from 'react-navigation';
+import Chats from 'screens/Chats';
+import CurrentChat from 'screens/CurrentChat';
 import Contacts from 'screens/Contacts';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\nCmd+D or shake for dev menu',
-  android:
-    `Double tap R on your keyboard to reload,\n
-    Shake or press menu button for dev menu`,
-});
-
-type Props = {};
-export default class App extends Component<Props> {
-  componentDidMount() {}
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Contacts />
-        <Text style={styles.welcome}>Welcome</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+const App = createBottomTabNavigator({
+  Chats: {
+    screen: createStackNavigator({
+      Chats,
+      CurrentChat,
+    }),
+    navigationOptions: {
+      tabBarLabel: 'Chats',
+      tabBarIcon: ({ tintColor }) => <Icon name="comments" size={16} color={tintColor} />,
+    },
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  Contacts: {
+    screen: createStackNavigator({
+      Contacts,
+    }),
+    navigationOptions: {
+      tabBarLabel: 'Contacts',
+      tabBarIcon: ({ tintColor }) => <Icon name="users" size={16} color={tintColor} />,
+    },
   },
 });
+
+export default App;
