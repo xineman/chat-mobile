@@ -6,7 +6,9 @@
       "alias": {
         "styles": "./src/styles",
         "components": "./src/components",
-        "screens": "./src/screens"
+        "screens": "./src/screens",
+        "modules": "./src/modules",
+        "services": "./src/services"
       }
     }]
   ]

@@ -10,26 +10,33 @@ import Contacts from 'screens/Contacts';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
-const App = createBottomTabNavigator({
-  Chats: {
-    screen: createStackNavigator({
-      Chats,
-      CurrentChat,
+const App = createStackNavigator({
+  Tabs: {
+    screen: createBottomTabNavigator({
+      Chats: {
+        screen: createStackNavigator({
+          Chats,
+        }),
+        navigationOptions: {
+          tabBarLabel: 'Chats',
+          tabBarIcon: ({ tintColor }) => <Icon name="comments" size={16} color={tintColor} />,
+        },
+      },
+      Contacts: {
+        screen: createStackNavigator({
+          Contacts,
+        }),
+        navigationOptions: {
+          tabBarLabel: 'Contacts',
+          tabBarIcon: ({ tintColor }) => <Icon name="users" size={16} color={tintColor} />,
+        },
+      },
     }),
     navigationOptions: {
-      tabBarLabel: 'Chats',
-      tabBarIcon: ({ tintColor }) => <Icon name="comments" size={16} color={tintColor} />,
+      header: null,
     },
   },
-  Contacts: {
-    screen: createStackNavigator({
-      Contacts,
-    }),
-    navigationOptions: {
-      tabBarLabel: 'Contacts',
-      tabBarIcon: ({ tintColor }) => <Icon name="users" size={16} color={tintColor} />,
-    },
-  },
+  CurrentChat,
 });
 
 export default App;

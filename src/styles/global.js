@@ -5,6 +5,5 @@ export default StyleSheet.create({
   container: {
     backgroundColor: '#F5FCFF',
     flex: 1,
-    justifyContent: 'center',
   },
 });

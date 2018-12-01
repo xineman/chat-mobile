@@ -49,6 +49,7 @@ export default class Chats extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   welcome: {
     fontSize: 20,
